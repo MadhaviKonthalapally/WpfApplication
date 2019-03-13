@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Madhu" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MININT-07KK9VT;Initial Catalog=Madhu;Integrated Security=True" SettingsObjectName="WpfApp3.Properties.Settings" SettingsPropertyName="MadhuConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EmployeeDetails1" Member="EmployeeDetails1s">
+    <Type Name="EmployeeDetails1">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayDate" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="EmployeeDetails1_SalaryDetail" Member="SalaryDetail" ThisKey="ID" OtherKey="Id" Type="SalaryDetail" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalaryDetails" Member="SalaryDetails">
+    <Type Name="SalaryDetail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaidMonth" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PaidAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="EmployeeDetails1_SalaryDetail" Member="EmployeeDetails1" ThisKey="Id" OtherKey="ID" Type="EmployeeDetails1" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

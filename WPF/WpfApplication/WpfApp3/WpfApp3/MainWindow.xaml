@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+         
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+
+
+    <Grid Margin="8,10,-8,-10">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Employee Details"  Click="mnuNew_Click">
+            </MenuItem>
+            <MenuItem Header="_PaidMonth"  Click="mnuPaid_Click">
+            </MenuItem>
+        </Menu>       
+       
+        <StackPanel Margin="20">
+            <ComboBox Name="monthsComboBox" SelectionChanged="OnmonthsComboBox_SelectionChanged">               
+            </ComboBox>
+        </StackPanel>
+        <DataGrid x:Name="EmployeeDataGrid" HorizontalAlignment="Left" Height="491" Margin="10,20,0,0" 
+              VerticalAlignment="Top" Width="741" AutoGenerateColumns="False" ItemsSource="{Binding}" Loaded="Window_Loaded" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Width="100" Header="Employee ID" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="100" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Gender,UpdateSourceTrigger=PropertyChanged}" Width="100" Header="Gender"/>
+                <DataGridTextColumn Binding="{Binding Salary,UpdateSourceTrigger=PropertyChanged}" Width="150" Header="Salary"/>
+                <DataGridTextColumn Binding="{Binding PayDate,UpdateSourceTrigger=PropertyChanged}" Width="100" Header="PayDate"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="SalaryDataGrid" HorizontalAlignment="Left" Height="Auto" Margin="10,50,0,0" 
+              VerticalAlignment="Top" Width="Auto" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="100" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding PaidMonth,UpdateSourceTrigger=PropertyChanged}" Width="100" Header="Paid Month"/>
+                <DataGridTextColumn Binding="{Binding PaidAmount,UpdateSourceTrigger=PropertyChanged}" Width="150" Header="Paid Amount"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
+    
